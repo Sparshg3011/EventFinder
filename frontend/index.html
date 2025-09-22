@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Events Search</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <div class="container">
+    <div class="form-container">
+      <h1 class="form-title">Events Search</h1>
+      <hr class="divider"/>
+      <form id="eventsForm" class="search-form">
+        <div class="form-group">
+          <label for="keyword" class="form-label required">Keyword</label>
+          <input type="text" id="keyword" name="keyword" class="form-input" required/>
+          <div id="keyword-tooltip" class="tooltip"></div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group half-width">
+            <label for="distance" class="form-label">Distance(miles)</label>
+            <div class="distance-input-wrapper">
+              <input type="number" id="distance" name="distance" class="form-input distance-input" placeholder="10"/>
+            </div>
+          </div>
+
+          <div class="form-group half-width">
+            <label for="category" class="form-label">Category<span class="required-star">*</span></label>
+            <select id="category" name="category" class="form-select">
+              <option value="">Default</option>
+              <option value="music">Music</option>
+              <option value="sports">Sports</option>
+              <option value="arts">Arts &amp; Theatre</option>
+              <option value="film">Film</option>
+              <option value="miscellaneous">Miscellaneous</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="location-header">
+            <label for="location" id="locationLabel" class="form-label required">Location</label>
+            <label class="checkbox-container">
+              <input type="checkbox" id="autoDetect" name="autoDetect"/>
+              <span class="checkmark"></span>
+              <span class="checkbox-text">Auto-Detect Location</span>
+            </label>
+          </div>
+          <input type="text" id="location" name="location" class="form-input" required/>
+          <div id="location-tooltip" class="tooltip"></div>
+        </div>
+
+        <div class="form-buttons">
+          <button type="submit" class="btn btn-search">SEARCH</button>
+          <button type="button" class="btn btn-clear" id="clearBtn">CLEAR</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="resultsContainer" class="results-container" style="display:none;">
+    <table id="resultsTable" class="results-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Icon</th>
+          <th class="sortable"><button type="button" class="sort-btn" data-column="event">Event</button></th>
+          <th class="sortable"><button type="button" class="sort-btn" data-column="genre">Genre</button></th>
+          <th class="sortable"><button type="button" class="sort-btn" data-column="venue">Venue</button></th>
+        </tr>
+      </thead>
+      <tbody id="resultsBody"></tbody>
+    </table>
+    <div id="noResults" class="no-results" style="display:none;">No records found</div>
+  </div>
+
+  <div id="eventDetails" class="event-details" style="display:none;">
+    <div class="event-details-content">
+      <div class="event-details-header">
+        <h3>Event Details</h3>
+        <button type="button" class="close-btn" id="closeEventDetails">&times;</button>
+      </div>
+      <div id="eventDetailsBody"></div>
+    </div>
+  </div>
+
+  <div id="venueToggleContainer" class="venue-toggle-container" style="display:none;"></div>
+
+   <div id="venueDetails" class="venue-details" style="display:none;">
+     <div class="venue-details-content">
+       <div class="venue-details-header">
+         <h3>Venue Details</h3>
+         <button type="button" class="close-btn" id="closeVenueDetails">&times;</button>
+       </div>
+       <div id="venueDetailsBody"></div>
+     </div>
+   </div>
+
+  <script src="http://127.0.0.1:3001/api/config"></script>
+  <script src="app.js?v=2"></script>
+</body>
+</html>

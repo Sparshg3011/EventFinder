@@ -1,0 +1,7 @@
+runtime: python310
+entrypoint: gunicorn -b :$PORT app:app
+
+env_variables:
+  TM_API_KEY: "YOUR_TICKETMASTER_API_KEY"
+  IPINFO_TOKEN: "YOUR_IPINFO_TOKEN"
+  GOOGLE_GEOCODING_API_KEY: "YOUR_GOOGLE_GEOCODING_KEY"
