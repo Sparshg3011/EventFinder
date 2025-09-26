@@ -327,7 +327,7 @@ body {
   background-color: rgba(255,255,255,0.9);
   border-radius: 8px;
   margin: 20px auto;
-  max-width: 800px;
+  width: 100%;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
