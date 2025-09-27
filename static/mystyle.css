@@ -13,7 +13,6 @@ body {
   min-height: 100vh;
   padding: 20px;
 }
-
 .container {
   width: 100%;
   max-width: 500px;
@@ -48,7 +47,6 @@ body {
   margin: 10px 0 25px 0;
   border: 0;
 }
-
 .search-form {
   display: flex;
   flex-direction: column;
@@ -66,7 +64,6 @@ body {
 .half-width {
   flex: 1;
 }
-
 .form-label {
   color: #87CEEB;
   font-size: 14px;
@@ -87,7 +84,6 @@ body {
   color: #ff6b6b;
   margin-left: 2px;
 }
-
 .form-input,
 .form-select {
   padding: 8px 12px;
@@ -119,7 +115,6 @@ body {
   background-color: #2a2a2a;
   color: #fff;
 }
-
 .location-header {
   display: flex;
   align-items: center;
@@ -127,7 +122,6 @@ body {
   margin-bottom: 8px;
   width: 100%;
 }
-
 .checkbox-container {
   display: flex;
   align-items: center;
@@ -179,7 +173,6 @@ body {
   font-size: 13px;
   color: #fff;
 }
-
 .form-buttons {
   display: flex;
   justify-content: flex-start;
@@ -226,7 +219,6 @@ body {
 .btn:active {
   transform: translateY(0);
 }
-
 .tooltip {
   position: absolute;
   bottom: -25px;
@@ -248,7 +240,6 @@ body {
   border-right: 5px solid transparent;
   border-bottom: 5px solid #ff4444;
 }
-
 .results-container {
   max-width: 1000px;
   margin: 20px auto;
@@ -307,7 +298,6 @@ body {
   content: " ↓";
   color: #333;
 }
-
 .results-table tbody tr {
   background-color: #fff;
   transition: background-color 0.2s ease;
@@ -317,7 +307,6 @@ body {
 }
 .event-cell { cursor: pointer; }
 .event-name { color: #000; text-decoration: none; font-weight: 500; }
-
 .no-results {
   text-align: center;
   padding: 60px 20px;
@@ -330,18 +319,17 @@ body {
   width: 100%;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
-
 .event-details,
 .venue-details {
   max-width: 900px;
   margin: 30px auto;
-  background: rgba(30,30,40,0.85);
+  background: rgba(60,65,75,0.75);
   border-radius: 15px;
   padding: 35px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: #fff;
 }
 .event-details-header {
@@ -373,7 +361,6 @@ body {
 .close-btn:hover {
   color: #fff;
 }
-
 .event-details-layout {
   display: flex;
   gap: 30px;
@@ -401,7 +388,6 @@ body {
   padding-top: 15px;
   border-top: 1px solid rgba(255,255,255,0.1);
 }
- 
 @media (max-width: 768px) {
   .event-details-layout {
     flex-direction: column;
@@ -415,7 +401,6 @@ body {
     padding: 20px;
   }
 }
- 
 .event-detail-row {
   display: flex;
   flex-direction: column;
@@ -437,7 +422,6 @@ body {
   font-size: 16px;
   line-height: 1.5;
 }
-
 .status-onsale {
   background: #316f33;
   color: #fff;
@@ -471,7 +455,6 @@ body {
   font-weight: 500;
   display: inline-block;
 }
-
 .artist-link {
   color: #4FC3F7;
   text-decoration: none;
@@ -482,7 +465,6 @@ body {
   color: #81D4FA;
   text-decoration: underline;
 }
-
 .venue-details { display: block; background: transparent; box-shadow: none; padding: 0; margin: 20px auto; max-width: 900px; }
 .venue-details-content { background: transparent; border-radius: 0; padding: 0; box-shadow: none; color: #333; }
 .venue-details-header { display: none; }
@@ -508,8 +490,6 @@ body {
 #venueDetailsBody .event-detail-value a:hover {
   text-decoration: underline;
 }
-
-/* White card layout inside venue details */
 .venue-card {
   background: #ffffff;
   border-radius: 12px;
@@ -529,7 +509,7 @@ body {
   background: #fff;
   padding: 8px 6px 14px 6px;
   border-radius: 12px;
-  border: 3px solid #000;
+  border: 1px solid #000;
 }
 .venue-card-row {
   display: flex;
@@ -559,7 +539,6 @@ body {
   color: #333;
 }
 .venue-address-label {
-  font-weight: 600;
   margin-bottom: 4px;
 }
 .venue-maps-link a {
@@ -567,7 +546,6 @@ body {
   text-decoration: none;
 }
 .venue-maps-link a:hover { text-decoration: underline; }
-
 .venue-card-divider-vertical {
   width: 2px;
   height: 100px;
@@ -584,7 +562,6 @@ body {
   text-decoration: none;
 }
 .venue-card-right a:hover { text-decoration: underline; }
-
 @media (max-width: 600px) {
   .venue-card-content {
     flex-direction: column;
@@ -594,7 +571,6 @@ body {
 .venue-toggle-container { max-width: 900px; margin: 0 auto 10px auto; text-align: center; }
 .venue-toggle { color: #fff; background: none; border: none; padding: 0; font: inherit; font-size: 26px; cursor: pointer; text-decoration: none; display: inline-block; text-align: center; margin-top: 10px; transition: color 0.3s; }
 .venue-toggle:hover { color: #fff; text-decoration: underline; }
-
 .event-detail-value a[target="_blank"] {
   color: #4FC3F7;
   text-decoration: none;
@@ -604,14 +580,12 @@ body {
   color: #81D4FA;
   text-decoration: underline;
 }
-
 .event-detail-value img {
   border-radius: 8px;
   border: 1px solid rgba(255,255,255,0.2);
   max-width: 300px;
   height: auto;
 }
-
 .distance-input-wrapper {
   position: relative;
   width: 100%;
@@ -634,7 +608,6 @@ body {
   opacity: 0.6;
   pointer-events: none;
 }
-
 @media (max-width: 600px) {
   .form-container {
     padding: 20px;

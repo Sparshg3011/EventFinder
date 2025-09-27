@@ -3,10 +3,11 @@ from flask_cors import CORS
 import requests
 import os
 from dotenv import load_dotenv
+from geolib import geohash as geohash_lib
 
 load_dotenv()
 
-app = Flask(__name__, static_folder='../frontend', static_url_path='')
+app = Flask(__name__, static_folder='static', static_url_path='')
 CORS(app)
 
 TM_API_KEY = os.environ.get('TM_API_KEY', '')
@@ -24,7 +25,7 @@ CATEGORY_SEGMENT_MAP = {
 
 @app.route('/')
 def index():
-    return send_from_directory('../frontend', 'index.html')
+    return send_from_directory('static', 'index.html')
 
 @app.route('/api/config')
 def get_config():
@@ -42,10 +43,20 @@ def search_events():
         keyword = request.args.get('keyword', '').strip()
         distance = request.args.get('distance', '10').strip() or '10'
         category = request.args.get('category', '').strip()
+        lat = request.args.get('lat', '').strip()
+        lon = request.args.get('lon', '').strip()
         geo_point = request.args.get('geoPoint', '').strip()
 
-        if not keyword or not geo_point:
+        if not keyword:
             return jsonify({'error': 'Missing required parameters'}), 400
+
+        if not geo_point:
+            if not lat or not lon:
+                return jsonify({'error': 'Missing required parameters'}), 400
+            try:
+                geo_point = geohash_lib.encode(float(lat), float(lon), 7)
+            except Exception:
+                return jsonify({'error': 'Invalid coordinates'}), 400
 
         params = {
             'apikey': TM_API_KEY,

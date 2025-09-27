@@ -5,25 +5,6 @@ const GOOGLE_GEOCODING_API_KEY = window.CONFIG?.GOOGLE_GEOCODING_API_KEY || '';
 let currentSort = { column: null, direction: 'asc' };
 let eventsData = [];
 
-function encodeGeohash(latitude, longitude, precision = 7) {
-  const BASE32 = '0123456789bcdefghjkmnpqrstuvwxyz';
-  let minLat = -90.0, maxLat = 90.0, minLon = -180.0, maxLon = 180.0;
-  let geohash = '', bit = 0, ch = 0, even = true;
-
-  while (geohash.length < precision) {
-    if (even) {
-      const mid = (minLon + maxLon) / 2;
-      if (longitude >= mid) { ch |= 1 << (4 - bit); minLon = mid; } else { maxLon = mid; }
-    } else {
-      const mid = (minLat + maxLat) / 2;
-      if (latitude >= mid) { ch |= 1 << (4 - bit); minLat = mid; } else { maxLat = mid; }
-    }
-    even = !even;
-    if (bit < 4) { bit++; } else { geohash += BASE32[ch]; bit = 0; ch = 0; }
-  }
-  return geohash;
-}
-
 document.addEventListener('DOMContentLoaded', function () {
    const form = document.getElementById('eventsForm');
    const autoDetectCheckbox = document.getElementById('autoDetect');
@@ -176,12 +157,12 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
-    const geoHash = encodeGeohash(parseFloat(lat), parseFloat(lon), 7);
     const searchParams = new URLSearchParams({
       keyword,
       distance,
       category,
-      geoPoint: geoHash
+      lat: lat,
+      lon: lon
     });
 
      try {
@@ -540,9 +521,8 @@ function displayVenueDetails(venue) {
         <div class="venue-card-row">
           <div class="venue-card-left">
             <div class="venue-address">
-              <div class="venue-address-label">Address:</div>
-              <div class="venue-address-lines">
-                ${addressLine1 !== 'N/A' ? addressLine1 : 'N/A'}
+              <div class="venue-address-label">Address:
+              ${addressLine1 !== 'N/A' ? addressLine1 : 'N/A'}
                 ${(cityState !== 'N/A' || postalCode !== 'N/A') ? `<br>${[cityState !== 'N/A' ? cityState : '', postalCode !== 'N/A' ? postalCode : ''].filter(Boolean).join(' ')}` : ''}
               </div>
             </div>
