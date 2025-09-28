@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
      try {
-       const response = await fetch(`http://127.0.0.1:3001/api/search?${searchParams}`);
+       const response = await fetch(`https://backend-dot-webtechhw2-sparsh.wl.r.appspot.com/api/search?${searchParams}`);
        const data = await response.json();
 
       if (response.ok) {
@@ -328,11 +328,10 @@ document.addEventListener('DOMContentLoaded', function () {
 async function showEventDetails(eventId) {
   if (!eventId) { console.error('Invalid eventId'); return; }
    try {
-     const response = await fetch(`http://127.0.0.1:3001/api/event?id=${encodeURIComponent(eventId)}`);
+     const response = await fetch(`https://backend-dot-webtechhw2-sparsh.wl.r.appspot.com/api/event?id=${encodeURIComponent(eventId)}`);
      const data = await response.json();
     if (response.ok && data) {
       displayEventDetails(data);
-      // If venue details are open, refresh them for the new event's venue
       try {
         const openVenuePanel = document.getElementById('venueDetails');
         const isOpen = openVenuePanel && openVenuePanel.style.display === 'block';
@@ -467,7 +466,6 @@ function displayEventDetails(eventData) {
   eventDetails.style.display = 'block';
   eventDetails.scrollIntoView({ behavior: 'smooth' });
 
-  // Render Show Venue Details button OUTSIDE the event modal
   if (eventData._embedded?.venues?.[0]?.name) {
     venueToggleContainer.innerHTML = `<button type="button" class="venue-toggle" data-venue-name="${eventData._embedded.venues[0].name}">Show Venue Details ▼</button>`;
     venueToggleContainer.style.display = 'block';
@@ -480,7 +478,7 @@ function displayEventDetails(eventData) {
 async function showVenueDetails(venueName) {
   if (!venueName) { console.error('Invalid venueName'); return; }
    try {
-     const response = await fetch(`http://127.0.0.1:3001/api/venue?keyword=${encodeURIComponent(venueName)}`);
+     const response = await fetch(`https://backend-dot-webtechhw2-sparsh.wl.r.appspot.com/api/venue?keyword=${encodeURIComponent(venueName)}`);
      const data = await response.json();
     if (response.ok && data._embedded?.venues?.length > 0) {
       displayVenueDetails(data._embedded.venues[0]);

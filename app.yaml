@@ -1,4 +1,5 @@
 runtime: python310
+service: backend
 entrypoint: gunicorn -b :$PORT main:app
 
 env_variables:

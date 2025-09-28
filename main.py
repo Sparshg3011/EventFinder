@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 import requests
 import os
@@ -7,7 +7,7 @@ from geolib import geohash as geohash_lib
 
 load_dotenv()
 
-app = Flask(__name__, static_folder='static', static_url_path='')
+app = Flask(__name__)
 CORS(app)
 
 TM_API_KEY = os.environ.get('TM_API_KEY', '')
@@ -25,7 +25,7 @@ CATEGORY_SEGMENT_MAP = {
 
 @app.route('/')
 def index():
-    return send_from_directory('static', 'index.html')
+    return jsonify({'message': 'Backend API is running', 'endpoints': ['/api/search', '/api/event', '/api/venue', '/api/health']})
 
 @app.route('/api/config')
 def get_config():
