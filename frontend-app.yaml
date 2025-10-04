@@ -1,6 +1,0 @@
-runtime: python310
-service: frontend
-entrypoint: gunicorn -b :$PORT frontend:app
-
-env_variables:
-  BACKEND_URL: "https://backend-dot-webtechhw2-sparsh.wl.r.appspot.com"

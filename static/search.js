@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
      try {
-       const response = await fetch(`https://backend-dot-webtechhw2-sparsh.wl.r.appspot.com/api/search?${searchParams}`);
+       const response = await fetch(`/api/search?${searchParams}`);
        const data = await response.json();
 
       if (response.ok) {
@@ -328,7 +328,7 @@ document.addEventListener('DOMContentLoaded', function () {
 async function showEventDetails(eventId) {
   if (!eventId) { console.error('Invalid eventId'); return; }
    try {
-     const response = await fetch(`https://backend-dot-webtechhw2-sparsh.wl.r.appspot.com/api/event?id=${encodeURIComponent(eventId)}`);
+     const response = await fetch(`/api/event?id=${encodeURIComponent(eventId)}`);
      const data = await response.json();
     if (response.ok && data) {
       displayEventDetails(data);
@@ -478,7 +478,7 @@ function displayEventDetails(eventData) {
 async function showVenueDetails(venueName) {
   if (!venueName) { console.error('Invalid venueName'); return; }
    try {
-     const response = await fetch(`https://backend-dot-webtechhw2-sparsh.wl.r.appspot.com/api/venue?keyword=${encodeURIComponent(venueName)}`);
+     const response = await fetch(`/api/venue?keyword=${encodeURIComponent(venueName)}`);
      const data = await response.json();
     if (response.ok && data._embedded?.venues?.length > 0) {
       displayVenueDetails(data._embedded.venues[0]);
