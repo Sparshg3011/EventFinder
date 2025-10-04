@@ -135,7 +135,6 @@ Thumbs.db
 *.pid
 *.seed
 *.pid.lock
-process_log.txt
 
 # Google Cloud
 .gcloudignore
